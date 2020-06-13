@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function getRandomQuote() {
     return {
@@ -8,8 +8,10 @@ function getRandomQuote() {
 }
 
 export default function QuoteMachine() {
-    const [quote, setQuote] = useState(getRandomQuote())
+    const [quote, setQuote] = useState({})
     const getNewQuote = () => setQuote(getRandomQuote())
+
+    useEffect(() => getNewQuote(), [])
 
     return (
         <div id="quote-box" style={{width: '400px', margin: 'auto'}}>
